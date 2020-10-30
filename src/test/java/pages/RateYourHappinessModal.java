@@ -63,13 +63,13 @@ public class RateYourHappinessModal {
     }
 
     public void setTime(String hours, String minutes) {
-        new Select($(HOURS_SELECTOR)).selectByVisibleText(hours);
-        new Select($(MINUTES_SELECTOR)).selectByVisibleText(minutes);
+        $(HOURS_SELECTOR).selectOptionContainingText(hours);
+        $(MINUTES_SELECTOR).selectOptionContainingText(minutes);
     }
 
     public void setDate(String year, String month, String day, String hours, String minutes) {
-        new Select($(YEAR_SELECTOR)).selectByVisibleText(year);
-        new Select($(MONTH_SELECTOR)).selectByVisibleText(month);
+        $(YEAR_SELECTOR).selectOptionContainingText(year);
+        $(MONTH_SELECTOR).selectOptionContainingText(month);
         $(By.xpath(String.format(DAY, day))).click();
         setTime(hours, minutes);
     }
