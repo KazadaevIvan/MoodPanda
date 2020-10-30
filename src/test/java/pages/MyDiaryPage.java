@@ -12,6 +12,7 @@ public class MyDiaryPage extends BasePage {
     public static final String DATE_CSS = ".text-muteda:first-child";
     public static final String MOOD_RATING_CSS = ".badge.pull-right";
     public static final String DESCRIPTION = "(//*[contains(@class,'media-content')])[1]";
+    public static final String SHOW_OLDER_BUTTON_CSS = "#ContentPlaceHolderContent_ButtonNext";
 
     @Override
     public MyDiaryPage openPage() {
@@ -21,7 +22,7 @@ public class MyDiaryPage extends BasePage {
 
     @Override
     public MyDiaryPage isPageOpened() {
-        $(By.xpath(DESCRIPTION)).waitUntil(Condition.visible, 10000);
+        $(SHOW_OLDER_BUTTON_CSS).waitUntil(Condition.visible, 10000);
         return this;
     }
 
@@ -30,6 +31,7 @@ public class MyDiaryPage extends BasePage {
 
         assertEquals($(DATE_CSS).getText(), dateConstructor(year, month, day), "Date should be " + dateConstructor(year, month, day));
         assertEquals($(MOOD_RATING_CSS).getText(), String.valueOf(moodRating), "Mood rating should be " + moodRating);
+        $(By.xpath(DESCRIPTION)).waitUntil(Condition.visible, 10000);
         assertEquals($(By.xpath(DESCRIPTION)).getText(), description, "Description should be " + description);
         return this;
     }
