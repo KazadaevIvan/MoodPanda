@@ -1,6 +1,6 @@
 package tests;
 
-//import io.qameta.allure.Attachment;
+import io.qameta.allure.Attachment;
 
 import org.openqa.selenium.NoSuchSessionException;
 import org.openqa.selenium.OutputType;
@@ -56,18 +56,18 @@ public class TestListener implements ITestListener {
 
     }
 
-    //    @Attachment(value = "Last screen state", type = "image/png")
+    @Attachment(value = "Last screen state", type = "image/png")
     private byte[] takeScreenshot(ITestResult iTestResult) {
         ITestContext context = iTestResult.getTestContext();
         try {
             WebDriver driver = getWebDriver();
             if (driver != null) {
-                return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+                return ((TakesScreenshot)driver).getScreenshotAs(OutputType.BYTES);
             } else {
-                return new byte[]{};
+                return new byte[] {};
             }
         } catch (NoSuchSessionException | IllegalStateException ex) {
-            return null;
+            return new byte[] {};
         }
     }
 
