@@ -1,6 +1,7 @@
 package pages;
 
 import com.codeborne.selenide.Condition;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;
@@ -14,12 +15,14 @@ public class MyDiaryPage extends BasePage {
     public static final String DESCRIPTION = "(//*[contains(@class,'media-content')])[1]";
     public static final String SHOW_OLDER_BUTTON_CSS = "#ContentPlaceHolderContent_ButtonNext";
 
+    @Step("Open My Diary page")
     @Override
     public MyDiaryPage openPage() {
         open(URL);
         return this;
     }
 
+    @Step("Verify My Diary page is opened")
     @Override
     public MyDiaryPage isPageOpened() {
         $(SHOW_OLDER_BUTTON_CSS).waitUntil(Condition.visible, 10000);
