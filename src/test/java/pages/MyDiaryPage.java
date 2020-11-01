@@ -29,17 +29,20 @@ public class MyDiaryPage extends BasePage {
         return this;
     }
 
+    @Step("Validate mood. Mood rating should be '{moodRating}', description '{description}'")
     public MyDiaryPage validateMood(int moodRating, String description, String year, String month,
                                     String day) {
 
         String date = $(DATE_CSS).getText();
-        assertEquals(date.substring(0, date.indexOf('·')).trim(), dateConstructor(year, month, day), "Date should be " + dateConstructor(year, month, day));
+        assertEquals(date.substring(0, date.indexOf('·')).trim(), dateConstructor(year, month, day),
+                "Date should be " + dateConstructor(year, month, day));
         assertEquals($(MOOD_RATING_CSS).getText(), String.valueOf(moodRating), "Mood rating should be " + moodRating);
         $(By.xpath(DESCRIPTION)).waitUntil(Condition.visible, 10000);
         assertEquals($(By.xpath(DESCRIPTION)).getText(), description, "Description should be " + description);
         return this;
     }
 
+    @Step("Validate mood. Mood rating should be '{moodRating}', description '{description}'")
     public MyDiaryPage validateMood(int moodRating, String description) {
 
         assertEquals($(MOOD_RATING_CSS).getText(), String.valueOf(moodRating), "Mood rating should be " + moodRating);
