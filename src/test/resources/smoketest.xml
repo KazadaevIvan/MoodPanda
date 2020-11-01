@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Mood Panda Regression Test" parallel="tests" thread-count="2">
+    <listeners>
+        <listener class-name="tests.TestListener"/>
+        <listener class-name="tests.AnnotationTransformer"/>
+    </listeners>
+
+    <test name="Create New post">
+        <classes>
+            <class name="tests.MoodPandaTest"/>
+        </classes>
+    </test>
+</suite>
