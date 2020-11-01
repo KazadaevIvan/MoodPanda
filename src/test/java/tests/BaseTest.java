@@ -20,12 +20,14 @@ public class BaseTest {
         Configuration.browser = "chrome";
         Configuration.startMaximized = true;
         Configuration.timeout = 10000;
-        Configuration.headless = false;
+        Configuration.headless = true;
         loginPage = new LoginPage();
     }
 
     @AfterMethod(alwaysRun = true)
     public void tearDown() {
-        getWebDriver().quit();
+        if (getWebDriver() != null) {
+            getWebDriver().quit();
+        }
     }
 }
