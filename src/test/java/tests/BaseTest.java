@@ -20,7 +20,7 @@ public class BaseTest {
         Configuration.browser = System.getProperty("browser");
         Configuration.startMaximized = true;
         Configuration.timeout = 10000;
-        Configuration.headless = true;
+        Configuration.headless = Boolean.getBoolean("headless");
         loginPage = new LoginPage();
     }
 
