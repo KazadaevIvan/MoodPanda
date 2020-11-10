@@ -5,6 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <selenide.version>5.15.1</selenide.version>
         <testng.version>7.0.0</testng.version>
         <suiteXmlFile>src/test/resources/smoketest.xml</suiteXmlFile>
