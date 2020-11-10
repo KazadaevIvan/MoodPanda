@@ -10,6 +10,10 @@ pipeline {
             }
             parameters {
                 gitParameter branchFilter: 'origin/(.*)', defaultValue: 'master', name: 'BRANCH', type: 'PT_BRANCH'
+                string(defaultValue: '', description: '', name: 'password', trim: false)
+                string(defaultValue: '', description: '', name: 'email', trim: false)
+                string(defaultValue: 'chrome', description: '', name: 'browser', trim: false)
+                booleanParam(defaultValue: true, description: '', name: 'headless')
             }
 
     stages {
@@ -22,7 +26,7 @@ pipeline {
                 //sh "mvn clean test -Dmaven.test.failure.ignore=true"
 
                 // To run Maven on a Windows agent, use
-                bat "mvn clean test -Dmaven.test.failure.ignore=true"
+                bat "mvn clean test -Dpassword=${params.password} -Demail=${params.email} -Dbrowser=${params.browser} -Dheadless=${params.headless} -Dmaven.test.failure.ignore=true"
             }
 
             post {
